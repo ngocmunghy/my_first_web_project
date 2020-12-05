@@ -344,8 +344,8 @@
 		while($row = $result->fetch_assoc()) {
 			if($row['email'] == $gmail) {
 				if($row['password'] == $_POST['password']) {
-					// $_SESSION['email'] = $row['email'];
-					// $_SESSION['name'] = $row['name'];
+					$_SESSION['email'] = $row['email'];
+					$_SESSION['name'] = $row['name'];
 					header("Location: layout.php");
 				} else {
 					echo "Wrong password";

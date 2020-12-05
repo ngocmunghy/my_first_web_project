@@ -1,5 +1,9 @@
+<?php
+        session_start(); 
+        $conn = mysqli_connect('localhost','root','','sms');
+    ?>
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,7 +69,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="layout.php">
                 <span class="glyphicon glyphicon-home"></span> Trang chủ
             </a>
         </div>
@@ -101,12 +105,9 @@
                     <li><a href="#">Quên mật khẩu</a></li>
                     <li><a href="#">Đăng ký thành viên</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">Đăng xuất</a></li>
+                    <li><a href="logout.php">Đăng xuất</a></li>
                     <li><a href="#">Đổi mật khâu</a></li>
                     <li><a href="#">Cập nhật hồ sơ</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Đơn hàng</a></li>
-                    <li><a href="#">Hàng đã mua</a></li>
                 </ul>
             </li>
         </ul>
@@ -124,8 +125,12 @@
             <div class = "poly-cart">
                 <div class="panel panel-default">
                     <div class = "panel-heading">
-                        <h4 class = "panel-title" align="center">
-                            Admin
+                        <h4 class = "panel-title" align="center" >
+                            <b>
+                                <?php 
+                                    echo $_SESSION['name'];
+                                ?>
+                            </b>
                         </h4>
                     </div>
                     <div class="panel-body">
