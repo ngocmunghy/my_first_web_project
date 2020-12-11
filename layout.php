@@ -101,13 +101,10 @@
                     <span class="glyphicon glyphicon-user"></span> Tài khoản <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="abc.php">Đăng nhập</a></li>
-                    <li><a href="#">Quên mật khẩu</a></li>
-                    <li><a href="#">Đăng ký thành viên</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="logout.php">Đăng xuất</a></li>
+                    <li><a href="#">Thông tin người dùng</a></li>
                     <li><a href="#">Đổi mật khâu</a></li>
                     <li><a href="#">Cập nhật hồ sơ</a></li>
+                    <li><a href="logout.php">Đăng xuất</a></li>
                 </ul>
             </li>
         </ul>
@@ -118,7 +115,7 @@
 <div class="container" style = "height: auto">
     <div class = "row">
         <article class="col-sm-9">
-
+            
         </article>
 
         <aside class="col-sm-3">
@@ -142,7 +139,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <span class = "glyphicon glyphicon-th-list"></span>
-                    <strong>Chủng Loại</strong>
+                    <strong>Danh sách</strong>
                 </div>
                 <div class="list-group">
                     <a href="#" class="list-group-item">Quản lý giáo viên</a>
