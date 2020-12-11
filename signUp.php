@@ -42,10 +42,15 @@
 			$email = $_POST['email'];
 			$password = $_POST['password'];
 			$cmd = "insert into login values ('$email','$password','$name')";
-			$result = mysqli_query($conn,$cmd);
-			$cmd = "select * from login where email = $email";
-			echo "Sign up successully!";
-			header("Location: login.php");
+			//$result = mysqli_query($conn,$cmd);
+			if(mysqli_query($conn, $cmd)) {
+				$sql = "select * from login where email = '$email'";
+				$res = mysqli_query($conn,$sql);
+				$_SESSION['email'] = $email;
+				$_SESSION['name'] = $name;
+				header("Location: layout.php");
+			}
+			mysqli_close($conn);
 		} else {
 			echo "The re-password you've input is not match!";
 		}
