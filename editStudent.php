@@ -1,6 +1,31 @@
 <?php
 session_start(); 
 require_once('dbhelp.php');
+$id = $_GET['id'];
+$cmd = "select * from sinhvien where id = '$id'";
+$rs = executeResult($cmd);
+$res = $rs[0];
+//print_r($rs)
+
+if(!empty($_POST)) {
+
+  if(isset($_POST['usr'])) {
+    $name = $_POST['usr'];
+  }
+
+  if(isset($_POST['age'])) {
+    $age = $_POST['age'];
+  }
+
+  if(isset($_POST['address'])) {
+    $address = $_POST['address'];
+  }
+
+  $sql = "update sinhvien set name = '$name', age = '$age', address = '$address' where id = '$id'";
+  execute($sql);
+  header("Location: layout.php");
+  die(); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,58 +141,29 @@ require_once('dbhelp.php');
 <div class="container" style = "height: auto">
   <div class = "row">
     <article class="col-sm-9">
-      <div>
-        <h4 class = "panel">                    
-          <b>
-            Quản lý sinh viên
-          </b>
-        </h4>
-
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="text-center">Register a new student</h3>
+        </div>
+        <div class="panel-body">
+          <form method="POST">
+            <div class="form-group">
+              <label for="usr">Name:</label>
+              <input required="true" type="text" class="form-control" id="usr" name="usr" value="<?php echo $res['name']; ?>">
+            </div>
+            <div class="form-group">
+              <label for="age">Age:</label>
+              <input required="true" type="number" class="form-control" id="age" name="age" value="<?php echo $res['age']; ?>">
+            </div>
+            <div class="form-group">
+              <label for="address">Address:</label>
+              <input type="text" class="form-control" id="address" name="address" value="<?php echo $res['address']; ?>">
+            </div>
+            <button class="btn btn-success">Save</button>
+          </form>
+        </div>
       </div>
 
-      <table class="table table-bordered table-striped">
-        <thead class = "table-dark">
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Address</th>
-            <th width="60px"></th>
-            <th width="60px"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $sql = "select * from sinhvien"; 
-          $stuList = executeResult($sql);
-          foreach($stuList as $i) {
-            echo "<tr>";
-            echo "<td>".$i['id']."</td>";
-            echo "<td>".$i['name']."</td>";
-            echo "<td>".$i['age']."</td>";
-            echo "<td>".$i['address']."</td>";
-            echo "<td><button class='btn btn-warning'>
-            <a href='editStudent.php?id=".$i['id']."'>
-            Edit
-            </a>
-            </button></td>";
-            echo "<td><button class='btn btn-danger'>
-            <a href='addStudent.php'>
-            Delete
-            </a>
-            </button></td>";
-            echo "</tr>";
-          } 
-          ?>
-
-        </tbody>
-
-      </table>
-      <button class="btn btn-success">
-        <a href="addStudent.php">
-          Add Student
-        </a>
-      </button>
     </article>
 
     <aside class="col-sm-3">
