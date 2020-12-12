@@ -5,14 +5,14 @@ require_once('dbhelp.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Layout</title>
- <style type="text/css">
-    header {
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <title>Layout</title>
+   <style type="text/css">
+       header {
         position: relative;
         background-color: #d5f4e6;
     }
@@ -36,30 +36,31 @@ require_once('dbhelp.php');
     }
 
     .poly-cart ul {
-     padding: 0px;
-     margin: 0px;
-     list-style: none;
-     font-variant: small-caps;
- }
+       padding: 0px;
+       margin: 0px;
+       list-style: none;
+       font-variant: small-caps;
+   }
 
- .poly-cart .panel-heading strong {
-     font-variant: small-caps;
-     font-size: larger;
-     text-shadow: 0 0 2px black;
- }
+   .poly-cart .panel-heading strong {
+       font-variant: small-caps;
+       font-size: larger;
+       text-shadow: 0 0 2px black;
+   }  
 </style>
+<!--  <link rel="stylesheet" type="text/css" href="style.css"> -->
 </head>
 <body>
     <div class="container" style = "height: auto">
-     <header class="row">
+       <header class="row">
         <div class = "shopping-mall">
-         <h1>Phần mềm quản lý trường học</h1>
-         <!-- <h5>The center point of the professional programming</h5> -->
-     </div>
-     <img class = "pull-right" src="hust.png"/>
- </header>
+           <h1>Phần mềm quản lý trường học</h1>
+           <!-- <h5>The center point of the professional programming</h5> -->
+       </div>
+       <img class = "pull-right" src="hust.png"/>
+   </header>
 
- <nav class="navbar navbar-inverse">
+   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -115,8 +116,17 @@ require_once('dbhelp.php');
 <div class="container" style = "height: auto">
     <div class = "row">
         <article class="col-sm-9">
-            <table class="table table-bordered">
-              <thead class = "thead-dark">
+            <div>
+                <h4 class = "panel">                    
+                    <b>
+                        Quản lý sinh viên
+                    </b>
+                </h4>
+
+            </div>
+
+            <table class="table table-bordered table-striped">
+              <thead class = "table-dark">
                 <tr>
                   <th>#</th>
                   <th>Name</th>
@@ -182,9 +192,9 @@ require_once('dbhelp.php');
 </div>
 
 <footer class="panel panel-default">
- <div class = "panel-heading text-center">
-     <p>SMS v.1.0 &copy; 2020</p>
- </div>
+   <div class = "panel-heading text-center">
+       <p>SMS v.1.0 &copy; 2020</p>
+   </div>
 </footer>
 </div>
 </body>
