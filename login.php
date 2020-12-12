@@ -24,7 +24,7 @@
 			</div>
 
 			<form action="" method="post">
-				<input type="text" id="login" class="fadeIn second" placeholder="Email: name@email.com" name="email" required>
+				<input type="text" id="login" class="fadeIn second" placeholder="Email" name="email" required>
 				<input type="password" id="password" class="fadeIn third" placeholder="Password" name="password" required>
 				<input type="submit" class="fadeIn fourth" value="Log In" name="login">
 			</form>

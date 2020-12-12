@@ -1,17 +1,17 @@
 <?php
-        session_start(); 
-        $conn = mysqli_connect('localhost','root','','sms');
-    ?>
+session_start(); 
+require_once('dbhelp.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <title>Layout</title>
-   <style type="text/css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <title>Layout</title>
+ <style type="text/css">
     header {
         position: relative;
         background-color: #d5f4e6;
@@ -36,30 +36,30 @@
     }
 
     .poly-cart ul {
-       padding: 0px;
-       margin: 0px;
-       list-style: none;
-       font-variant: small-caps;
-   }
+     padding: 0px;
+     margin: 0px;
+     list-style: none;
+     font-variant: small-caps;
+ }
 
-   .poly-cart .panel-heading strong {
-       font-variant: small-caps;
-       font-size: larger;
-       text-shadow: 0 0 2px black;
-   }
+ .poly-cart .panel-heading strong {
+     font-variant: small-caps;
+     font-size: larger;
+     text-shadow: 0 0 2px black;
+ }
 </style>
 </head>
 <body>
     <div class="container" style = "height: auto">
-       <header class="row">
+     <header class="row">
         <div class = "shopping-mall">
-           <h1>Phần mềm quản lý trường học</h1>
-           <!-- <h5>The center point of the professional programming</h5> -->
-       </div>
-       <img class = "pull-right" src="hust.png"/>
-   </header>
+         <h1>Phần mềm quản lý trường học</h1>
+         <!-- <h5>The center point of the professional programming</h5> -->
+     </div>
+     <img class = "pull-right" src="hust.png"/>
+ </header>
 
-   <nav class="navbar navbar-inverse">
+ <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -115,47 +115,76 @@
 <div class="container" style = "height: auto">
     <div class = "row">
         <article class="col-sm-9">
-            
-        </article>
+            <table class="table table-bordered">
+              <thead class = "thead-dark">
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Address</th>
+                  <th width="60px"></th>
+                  <th width="60px"></th>
+              </tr>
+          </thead>
+          <tbody>
+              <?php
+              $sql = "select * from sinhvien"; 
+              $stuList = executeResult($sql);
+              foreach($stuList as $i) {
+              echo '<tr>
+                  <td>'.$i['id'].'</td>
+                  <td>'.$i['name'].'</td>
+                  <td>'.$i['age'].'</td>
+                  <td>'.$i['address'].'</td>
+                  <td><button class="btn btn-warning">Edit</button></td>
+                  <td><button class="btn btn-danger">Delete</button></td>
+              </tr>';
+          } 
+          ?>
 
-        <aside class="col-sm-3">
-            <div class = "poly-cart">
-                <div class="panel panel-default">
-                    <div class = "panel-heading">
-                        <h4 class = "panel-title" align="center" >
-                            <b>
-                                <?php 
-                                    echo $_SESSION['name'];
-                                ?>
-                            </b>
-                        </h4>
-                    </div>
-                    <div class="panel-body">
-                        <img src="account.png"/>
-                        
-                    </div>
-                </div>
+      </tbody>
+  </table>
+  <button class="btn btn-success">Add Student</button>
+</article>
+
+<aside class="col-sm-3">
+    <div class = "poly-cart">
+        <div class="panel panel-default">
+            <div class = "panel-heading">
+                <h4 class = "panel-title" align="center" >
+                    <b>
+                        <?php 
+                        echo $_SESSION['name'];
+                        ?>
+                    </b>
+                </h4>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span class = "glyphicon glyphicon-th-list"></span>
-                    <strong>Danh sách</strong>
-                </div>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Quản lý giáo viên</a>
-                    <a href="#" class="list-group-item">Quản lý sinh viên</a>
-                    <a href="#" class="list-group-item">Quản lý môn học</a>
-                    <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a>
-                </div>
+            <div class="panel-body">
+                <img src="account.png"/>
+
             </div>
-        </aside>
+        </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class = "glyphicon glyphicon-th-list"></span>
+            <strong>Danh sách</strong>
+        </div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">Quản lý sinh viên</a>
+            <a href="#" class="list-group-item">Quản lý giáo viên</a>
+            <a href="#" class="list-group-item">Quản lý môn học</a>
+            <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a>
+        </div>
+    </div>
+</aside>
+</div>
 </div>
 
 <footer class="panel panel-default">
-   <div class = "panel-heading text-center">
-       <p>SMS v.1.0 &copy; 2020</p>
-   </div>
+ <div class = "panel-heading text-center">
+     <p>SMS v.1.0 &copy; 2020</p>
+ </div>
 </footer>
 </div>
 </body>
