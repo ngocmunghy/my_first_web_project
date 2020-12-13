@@ -85,7 +85,7 @@ if(!empty($_POST)) {
      <h1>Phần mềm quản lý trường học</h1>
      <!-- <h5>The center point of the professional programming</h5> -->
    </div>
-   <img class = "pull-right" src="hust.png"/>
+   <img class = "pull-right" src="../image/hust.png"/>
  </header>
 
  <nav class="navbar navbar-inverse">
@@ -195,7 +195,7 @@ if(!empty($_POST)) {
         <div class="list-group">
           <a href="../student/showStudents.php" class="list-group-item">Quản lý sinh viên</a>
           <a href="./showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
-          <a href="#" class="list-group-item">Quản lý môn học</a>
+          <a href="../subject/showSubjects.php" class="list-group-item">Quản lý môn học</a>
           <a href="#" class="list-group-item">Quản lý lớp học</a>
           <a href="#" class="list-group-item">Quản lý sinh viên lớp</a>
 <!--           <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a> -->

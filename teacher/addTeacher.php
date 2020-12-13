@@ -85,7 +85,7 @@ if(!empty($_POST)) {
      <h1>Phần mềm quản lý trường học</h1>
      <!-- <h5>The center point of the professional programming</h5> -->
    </div>
-   <img class = "pull-right" src="hust.png"/>
+   <img class = "pull-right" src="../image/hust.png"/>
  </header>
 
  <nav class="navbar navbar-inverse">

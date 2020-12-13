@@ -1,6 +1,29 @@
 <?php
 session_start(); 
 require_once('../dbhelp.php');
+
+if(!empty($_POST)) {
+
+  if(isset($_POST['mamh'])) {
+    $mamh = $_POST['mamh'];
+    $mamh = addslashes($mamh);
+  }
+
+  if(isset($_POST['tenmh'])) {
+    $tenmh = $_POST['tenmh'];
+    $tenmh = addslashes($tenmh);
+  }
+
+  if(isset($_POST['tinchi'])) {
+    $tinchi = $_POST['tinchi'];
+    $tinchi = addslashes($tinchi);
+  }
+
+  $sql = "insert into monhoc values ('$mamh','$tenmh','$tinchi')";
+  execute($sql);
+  header("Location: ./showSubjects.php");
+  die(); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +33,7 @@ require_once('../dbhelp.php');
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Show Student</title>
+ <title>Register a new subject</title>
  <style type="text/css">
    header {
     position: relative;
@@ -116,58 +139,29 @@ require_once('../dbhelp.php');
 <div class="container" style = "height: auto">
   <div class = "row">
     <article class="col-sm-9">
-      <div>
-        <h4 class = "panel">                    
-          <b>
-            Quản lý sinh viên
-          </b>
-        </h4>
-
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="text-center">Register a new subject</h3>
+        </div>
+        <div class="panel-body">
+          <form method="POST">
+            <div class="form-group">
+              <label for="id">Subject ID:</label>
+              <input required="true" type="text" class="form-control" id="id" name="mamh">
+            </div>
+            <div class="form-group">
+              <label for="usr">Subject Name:</label>
+              <input required="true" type="text" class="form-control" id="usr" name="tenmh">
+            </div>
+            <div class="form-group">
+              <label for="age">Credits:</label>
+              <input required="true" type="number" class="form-control" id="age" name="tinchi">
+            </div>
+            <button class="btn btn-success">Save</button>
+          </form>
+        </div>
       </div>
 
-      <table class="table table-bordered table-striped">
-        <thead class = "table-dark">
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Address</th>
-            <th width="60px"></th>
-            <th width="60px"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $sql = "select * from sinhvien"; 
-          $stuList = executeResult($sql);
-          foreach($stuList as $i) {
-            echo "<tr>";
-            echo "<td>".$i['masv']."</td>";
-            echo "<td>".$i['name']."</td>";
-            echo "<td>".$i['age']."</td>";
-            echo "<td>".$i['address']."</td>";
-            echo "<td><button class='btn btn-warning'>
-            <a href='./editStudent.php?id=".$i['masv']."'>
-            Edit
-            </a>
-            </button></td>";
-            echo "<td><button class='btn btn-danger'>
-            <a href='./deleteStudent.php?id=".$i['masv']."'>
-            Delete
-            </a>
-            </button></td>";
-            echo "</tr>";
-          } 
-          ?>
-
-        </tbody>
-
-      </table>
-      <button class="btn btn-success">
-        <a href="./addStudent.php">
-          Add Student
-        </a>
-      </button>
     </article>
 
     <aside class="col-sm-3">
@@ -183,7 +177,7 @@ require_once('../dbhelp.php');
             </h4>
           </div>
           <div class="panel-body">
-            <img src="../image/account.png"/>
+            <img src="../account.png"/>
 
           </div>
         </div>
@@ -194,12 +188,11 @@ require_once('../dbhelp.php');
           <strong>Danh sách</strong>
         </div>
         <div class="list-group">
-          <a href="./showStudents.php" class="list-group-item">Quản lý sinh viên</a>
-          <a href="../teacher/showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
-          <a href="#" class="list-group-item">Quản lý môn học</a>
+          <a href="../student/showStudents.php" class="list-group-item">Quản lý sinh viên</a>
+          <a href="../teacher/showTeacher.php" class="list-group-item">Quản lý giáo viên</a>
+          <a href="./showSubjects.php" class="list-group-item">Quản lý môn học</a>
           <a href="#" class="list-group-item">Quản lý lớp học</a>
           <a href="#" class="list-group-item">Quản lý sinh viên lớp</a>
-<!--           <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a> -->
         </div>
       </div>
     </aside>
