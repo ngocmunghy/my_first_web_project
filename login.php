@@ -37,14 +37,13 @@
 	<?php
 
 	session_start();
-	$email = "";
-	$name = "";
 	if (isset($_POST['login'])) {
 		$conn = mysqli_connect('localhost','root','','sms');
 		if(!$conn) {
 			die("Connection failed: ". $conn->connect_error);
 		}
 		$gmail = $_POST['email'];
+		$gmail = addslashes($gmail);
 		$cmd = "select * from login where email = '$gmail'";
 		$result = mysqli_query($conn,$cmd);
 		while($row = $result->fetch_assoc()) {

@@ -6,18 +6,22 @@ if(!empty($_POST)) {
 
   if(isset($_POST['id'])) {
     $id = $_POST['id'];
+    $id = addslashes($id);
   }
 
   if(isset($_POST['usr'])) {
     $name = $_POST['usr'];
+    $name = addslashes($name);
   }
 
   if(isset($_POST['age'])) {
     $age = $_POST['age'];
+    $age = addslashes($age);
   }
 
   if(isset($_POST['address'])) {
     $address = $_POST['address'];
+    $address = addslashes($address);
   }
 
   $sql = "insert into sinhvien values ('$id','$name','$age','$address')";
@@ -148,7 +152,7 @@ if(!empty($_POST)) {
           <form method="POST">
             <div class="form-group">
               <label for="id">ID:</label>
-              <input required="true" type="number" class="form-control" id="id" name="id">
+              <input type="number" class="form-control" id="id" name="id">
             </div>
             <div class="form-group">
               <label for="usr">Name:</label>

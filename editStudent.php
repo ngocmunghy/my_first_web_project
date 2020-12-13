@@ -11,14 +11,17 @@ if(!empty($_POST)) {
 
   if(isset($_POST['usr'])) {
     $name = $_POST['usr'];
+    $name = addslashes($name);
   }
 
   if(isset($_POST['age'])) {
     $age = $_POST['age'];
+    $age = addslashes($age);
   }
 
   if(isset($_POST['address'])) {
     $address = $_POST['address'];
+    $address = addslashes($address);
   }
 
   $sql = "update sinhvien set name = '$name', age = '$age', address = '$address' where id = '$id'";
