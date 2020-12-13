@@ -1,8 +1,8 @@
 <?php
 session_start(); 
 require_once('../dbhelp.php');
-$id = $_GET['id'];
-$cmd = "select * from sinhvien where id = '$id'";
+$masv = $_GET['id'];
+$cmd = "select * from sinhvien where masv = '$masv'";
 $rs = executeResult($cmd);
 $res = $rs[0];
 //print_r($rs)
@@ -24,7 +24,7 @@ if(!empty($_POST)) {
     $address = addslashes($address);
   }
 
-  $sql = "update sinhvien set name = '$name', age = '$age', address = '$address' where id = '$id'";
+  $sql = "update sinhvien set name = '$name', age = '$age', address = '$address' where masv = '$masv'";
   execute($sql);
   header("Location: ../layout.php");
   die(); 

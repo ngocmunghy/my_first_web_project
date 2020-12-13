@@ -142,17 +142,17 @@ require_once('dbhelp.php');
           $stuList = executeResult($sql);
           foreach($stuList as $i) {
             echo "<tr>";
-            echo "<td>".$i['id']."</td>";
+            echo "<td>".$i['masv']."</td>";
             echo "<td>".$i['name']."</td>";
             echo "<td>".$i['age']."</td>";
             echo "<td>".$i['address']."</td>";
             echo "<td><button class='btn btn-warning'>
-            <a href='./student/editStudent.php?id=".$i['id']."'>
+            <a href='./student/editStudent.php?id=".$i['masv']."'>
             Edit
             </a>
             </button></td>";
             echo "<td><button class='btn btn-danger'>
-            <a href='./student/deleteStudent.php?id=".$i['id']."'>
+            <a href='./student/deleteStudent.php?id=".$i['masv']."'>
             Delete
             </a>
             </button></td>";
