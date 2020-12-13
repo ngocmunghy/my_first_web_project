@@ -194,9 +194,11 @@ if(!empty($_POST)) {
         </div>
         <div class="list-group">
           <a href="./showStudents.php" class="list-group-item">Quản lý sinh viên</a>
-          <a href="#" class="list-group-item">Quản lý giáo viên</a>
+          <a href="../showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
           <a href="#" class="list-group-item">Quản lý môn học</a>
-          <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a>
+          <a href="#" class="list-group-item">Quản lý lớp học</a>
+          <a href="#" class="list-group-item">Quản lý sinh viên lớp</a>
+<!--           <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a> -->
         </div>
       </div>
     </aside>
