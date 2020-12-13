@@ -13,7 +13,7 @@
 	<div class="wrapper fadeInDown">
 		<div id="formContent">
 			<div class="fadeIn first">
-				<img src="hedspi.png" id="icon" alt="User Icon" />
+				<img src="./image/hedspi.png" id="icon" alt="User Icon" />
 			</div>
 
 			<form action="" method="post">
@@ -34,7 +34,7 @@
 			return;
 		} 
 		if(strcmp($_POST['password'], $_POST['repassword']) == 0) {
-			$conn = mysqli_connect('localhost','root','','sms');
+			$conn = mysqli_connect('localhost','root','','sms1');
 			if(!$conn) {
 				die("Connection failed: ". $conn->connect_error);
 			}

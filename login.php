@@ -20,7 +20,7 @@
 	<div class="wrapper fadeInDown">
 		<div id="formContent">
 			<div class="fadeIn first">
-				<img src="hedspi.png" id="icon" alt="User Icon" />
+				<img src="./image/hedspi.png" id="icon" alt="User Icon" />
 			</div>
 
 			<form action="" method="post">
@@ -38,7 +38,7 @@
 
 	session_start();
 	if (isset($_POST['login'])) {
-		$conn = mysqli_connect('localhost','root','','sms');
+		$conn = mysqli_connect('localhost','root','','sms1');
 		if(!$conn) {
 			die("Connection failed: ". $conn->connect_error);
 		}

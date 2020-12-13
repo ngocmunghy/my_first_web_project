@@ -26,7 +26,7 @@ if(!empty($_POST)) {
 
   $sql = "insert into sinhvien values ('$id','$name','$age','$address')";
   execute($sql);
-  header("Location: ../layout.php");
+  header("Location: ./showStudents.php");
   die(); 
 }
 ?>

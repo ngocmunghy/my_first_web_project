@@ -1,34 +1,6 @@
 <?php
 session_start(); 
 require_once('../dbhelp.php');
-$masv = $_GET['id'];
-$cmd = "select * from sinhvien where masv = '$masv'";
-$rs = executeResult($cmd);
-$res = $rs[0];
-//print_r($rs)
-
-if(!empty($_POST)) {
-
-  if(isset($_POST['usr'])) {
-    $name = $_POST['usr'];
-    $name = addslashes($name);
-  }
-
-  if(isset($_POST['age'])) {
-    $age = $_POST['age'];
-    $age = addslashes($age);
-  }
-
-  if(isset($_POST['address'])) {
-    $address = $_POST['address'];
-    $address = addslashes($address);
-  }
-
-  $sql = "update sinhvien set name = '$name', age = '$age', address = '$address' where masv = '$masv'";
-  execute($sql);
-  header("Location: ./showStudents.php");
-  die(); 
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +10,7 @@ if(!empty($_POST)) {
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Edit Student's info</title>
+ <title>Show Student</title>
  <style type="text/css">
    header {
     position: relative;
@@ -144,29 +116,58 @@ if(!empty($_POST)) {
 <div class="container" style = "height: auto">
   <div class = "row">
     <article class="col-sm-9">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="text-center">Update student's information</h3>
-        </div>
-        <div class="panel-body">
-          <form method="POST">
-            <div class="form-group">
-              <label for="usr">Name:</label>
-              <input required="true" type="text" class="form-control" id="usr" name="usr" value="<?php echo $res['name']; ?>">
-            </div>
-            <div class="form-group">
-              <label for="age">Age:</label>
-              <input required="true" type="number" class="form-control" id="age" name="age" value="<?php echo $res['age']; ?>">
-            </div>
-            <div class="form-group">
-              <label for="address">Address:</label>
-              <input type="text" class="form-control" id="address" name="address" value="<?php echo $res['address']; ?>">
-            </div>
-            <button class="btn btn-success">Save</button>
-          </form>
-        </div>
+      <div>
+        <h4 class = "panel">                    
+          <b>
+            Quản lý sinh viên
+          </b>
+        </h4>
+
       </div>
 
+      <table class="table table-bordered table-striped">
+        <thead class = "table-dark">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th width="60px"></th>
+            <th width="60px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          $sql = "select * from sinhvien"; 
+          $stuList = executeResult($sql);
+          foreach($stuList as $i) {
+            echo "<tr>";
+            echo "<td>".$i['masv']."</td>";
+            echo "<td>".$i['name']."</td>";
+            echo "<td>".$i['age']."</td>";
+            echo "<td>".$i['address']."</td>";
+            echo "<td><button class='btn btn-warning'>
+            <a href='./editStudent.php?id=".$i['masv']."'>
+            Edit
+            </a>
+            </button></td>";
+            echo "<td><button class='btn btn-danger'>
+            <a href='./deleteStudent.php?id=".$i['masv']."'>
+            Delete
+            </a>
+            </button></td>";
+            echo "</tr>";
+          } 
+          ?>
+
+        </tbody>
+
+      </table>
+      <button class="btn btn-success">
+        <a href="./addStudent.php">
+          Add Student
+        </a>
+      </button>
     </article>
 
     <aside class="col-sm-3">
@@ -182,7 +183,7 @@ if(!empty($_POST)) {
             </h4>
           </div>
           <div class="panel-body">
-            <img src="../account.png"/>
+            <img src="../image/account.png"/>
 
           </div>
         </div>

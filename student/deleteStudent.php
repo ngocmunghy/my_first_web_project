@@ -4,6 +4,6 @@
 
 	$sql = "delete from sinhvien where masv = '$id'";
 	execute($sql);
-	header("Location: ../layout.php");
+	header("Location: ./showStudents.php");
 	die();  
 ?>
