@@ -24,9 +24,9 @@ if(!empty($_POST)) {
     $address = addslashes($address);
   }
 
-  $sql = "insert into sinhvien values ('$id','$name','$age','$address')";
+  $sql = "insert into giaovien values ('$id','$name','$age','$address')";
   execute($sql);
-  header("Location: ./showStudents.php");
+  header("Location: ./showTeachers.php");
   die(); 
 }
 ?>
@@ -38,7 +38,7 @@ if(!empty($_POST)) {
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Register a new student</title>
+ <title>Register a new teacher</title>
  <style type="text/css">
    header {
     position: relative;
@@ -146,7 +146,7 @@ if(!empty($_POST)) {
     <article class="col-sm-9">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="text-center">Register a new student</h3>
+          <h3 class="text-center">Register a new teacher</h3>
         </div>
         <div class="panel-body">
           <form method="POST">
@@ -197,8 +197,8 @@ if(!empty($_POST)) {
           <strong>Danh sách</strong>
         </div>
         <div class="list-group">
-          <a href="./showStudents.php" class="list-group-item">Quản lý sinh viên</a>
-          <a href="#" class="list-group-item">Quản lý giáo viên</a>
+          <a href="../student/showStudents.php" class="list-group-item">Quản lý sinh viên</a>
+          <a href="./showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
           <a href="#" class="list-group-item">Quản lý môn học</a>
           <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a>
         </div>

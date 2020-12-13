@@ -1,13 +1,13 @@
 <?php
 session_start(); 
 require_once('../dbhelp.php');
+$magv = $_GET['id'];
+$cmd = "select * from giaovien where magv = '$magv'";
+$rs = executeResult($cmd);
+$res = $rs[0];
+//print_r($rs)
 
 if(!empty($_POST)) {
-
-  if(isset($_POST['id'])) {
-    $id = $_POST['id'];
-    $id = addslashes($id);
-  }
 
   if(isset($_POST['usr'])) {
     $name = $_POST['usr'];
@@ -24,9 +24,9 @@ if(!empty($_POST)) {
     $address = addslashes($address);
   }
 
-  $sql = "insert into sinhvien values ('$id','$name','$age','$address')";
+  $sql = "update giaovien set name = '$name', age = '$age', address = '$address' where magv = '$magv'";
   execute($sql);
-  header("Location: ./showStudents.php");
+  header("Location: ./showTeachers.php");
   die(); 
 }
 ?>
@@ -38,7 +38,7 @@ if(!empty($_POST)) {
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Register a new student</title>
+ <title>Edit Teacher's info</title>
  <style type="text/css">
    header {
     position: relative;
@@ -146,25 +146,21 @@ if(!empty($_POST)) {
     <article class="col-sm-9">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="text-center">Register a new student</h3>
+          <h3 class="text-center">Update teacher's information</h3>
         </div>
         <div class="panel-body">
           <form method="POST">
             <div class="form-group">
-              <label for="id">ID:</label>
-              <input type="number" class="form-control" id="id" name="id">
-            </div>
-            <div class="form-group">
               <label for="usr">Name:</label>
-              <input required="true" type="text" class="form-control" id="usr" name="usr">
+              <input required="true" type="text" class="form-control" id="usr" name="usr" value="<?php echo $res['name']; ?>">
             </div>
             <div class="form-group">
               <label for="age">Age:</label>
-              <input required="true" type="number" class="form-control" id="age" name="age">
+              <input required="true" type="number" class="form-control" id="age" name="age" value="<?php echo $res['age']; ?>">
             </div>
             <div class="form-group">
               <label for="address">Address:</label>
-              <input type="text" class="form-control" id="address" name="address">
+              <input type="text" class="form-control" id="address" name="address" value="<?php echo $res['address']; ?>">
             </div>
             <button class="btn btn-success">Save</button>
           </form>
@@ -197,8 +193,8 @@ if(!empty($_POST)) {
           <strong>Danh sách</strong>
         </div>
         <div class="list-group">
-          <a href="./showStudents.php" class="list-group-item">Quản lý sinh viên</a>
-          <a href="#" class="list-group-item">Quản lý giáo viên</a>
+          <a href="../student/showStudents.php" class="list-group-item">Quản lý sinh viên</a>
+          <a href="./showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
           <a href="#" class="list-group-item">Quản lý môn học</a>
           <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a>
         </div>

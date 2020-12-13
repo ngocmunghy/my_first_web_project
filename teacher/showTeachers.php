@@ -1,34 +1,6 @@
 <?php
 session_start(); 
 require_once('../dbhelp.php');
-
-if(!empty($_POST)) {
-
-  if(isset($_POST['id'])) {
-    $id = $_POST['id'];
-    $id = addslashes($id);
-  }
-
-  if(isset($_POST['usr'])) {
-    $name = $_POST['usr'];
-    $name = addslashes($name);
-  }
-
-  if(isset($_POST['age'])) {
-    $age = $_POST['age'];
-    $age = addslashes($age);
-  }
-
-  if(isset($_POST['address'])) {
-    $address = $_POST['address'];
-    $address = addslashes($address);
-  }
-
-  $sql = "insert into sinhvien values ('$id','$name','$age','$address')";
-  execute($sql);
-  header("Location: ./showStudents.php");
-  die(); 
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +10,7 @@ if(!empty($_POST)) {
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Register a new student</title>
+ <title>Show Teacher</title>
  <style type="text/css">
    header {
     position: relative;
@@ -144,33 +116,58 @@ if(!empty($_POST)) {
 <div class="container" style = "height: auto">
   <div class = "row">
     <article class="col-sm-9">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="text-center">Register a new student</h3>
-        </div>
-        <div class="panel-body">
-          <form method="POST">
-            <div class="form-group">
-              <label for="id">ID:</label>
-              <input type="number" class="form-control" id="id" name="id">
-            </div>
-            <div class="form-group">
-              <label for="usr">Name:</label>
-              <input required="true" type="text" class="form-control" id="usr" name="usr">
-            </div>
-            <div class="form-group">
-              <label for="age">Age:</label>
-              <input required="true" type="number" class="form-control" id="age" name="age">
-            </div>
-            <div class="form-group">
-              <label for="address">Address:</label>
-              <input type="text" class="form-control" id="address" name="address">
-            </div>
-            <button class="btn btn-success">Save</button>
-          </form>
-        </div>
+      <div>
+        <h4 class = "panel">                    
+          <b>
+            Quản lý giáo viên
+          </b>
+        </h4>
+
       </div>
 
+      <table class="table table-bordered table-striped">
+        <thead class = "table-dark">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th width="60px"></th>
+            <th width="60px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          $sql = "select * from giaovien"; 
+          $stuList = executeResult($sql);
+          foreach($stuList as $i) {
+            echo "<tr>";
+            echo "<td>".$i['magv']."</td>";
+            echo "<td>".$i['name']."</td>";
+            echo "<td>".$i['age']."</td>";
+            echo "<td>".$i['address']."</td>";
+            echo "<td><button class='btn btn-warning'>
+            <a href='./editTeacher.php?id=".$i['magv']."'>
+            Edit
+            </a>
+            </button></td>";
+            echo "<td><button class='btn btn-danger'>
+            <a href='./deleteTeacher.php?id=".$i['magv']."'>
+            Delete
+            </a>
+            </button></td>";
+            echo "</tr>";
+          } 
+          ?>
+
+        </tbody>
+
+      </table>
+      <button class="btn btn-success">
+        <a href="./addTeacher.php">
+          Add Teacher
+        </a>
+      </button>
     </article>
 
     <aside class="col-sm-3">
@@ -186,7 +183,7 @@ if(!empty($_POST)) {
             </h4>
           </div>
           <div class="panel-body">
-            <img src="../account.png"/>
+            <img src="../image/account.png"/>
 
           </div>
         </div>
@@ -197,8 +194,8 @@ if(!empty($_POST)) {
           <strong>Danh sách</strong>
         </div>
         <div class="list-group">
-          <a href="./showStudents.php" class="list-group-item">Quản lý sinh viên</a>
-          <a href="#" class="list-group-item">Quản lý giáo viên</a>
+          <a href="../student/showStudents.php" class="list-group-item">Quản lý sinh viên</a>
+          <a href="./showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
           <a href="#" class="list-group-item">Quản lý môn học</a>
           <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a>
         </div>
