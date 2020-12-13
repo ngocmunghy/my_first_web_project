@@ -147,12 +147,12 @@ require_once('dbhelp.php');
             echo "<td>".$i['age']."</td>";
             echo "<td>".$i['address']."</td>";
             echo "<td><button class='btn btn-warning'>
-            <a href='editStudent.php?id=".$i['id']."'>
+            <a href='./student/editStudent.php?id=".$i['id']."'>
             Edit
             </a>
             </button></td>";
             echo "<td><button class='btn btn-danger'>
-            <a href='deleteStudent.php?id=".$i['id']."'>
+            <a href='./student/deleteStudent.php?id=".$i['id']."'>
             Delete
             </a>
             </button></td>";
@@ -164,7 +164,7 @@ require_once('dbhelp.php');
 
       </table>
       <button class="btn btn-success">
-        <a href="addStudent.php">
+        <a href="./student/addStudent.php">
           Add Student
         </a>
       </button>

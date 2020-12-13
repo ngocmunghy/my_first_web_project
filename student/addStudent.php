@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-require_once('dbhelp.php');
+require_once('../dbhelp.php');
 
 if(!empty($_POST)) {
 
@@ -26,7 +26,7 @@ if(!empty($_POST)) {
 
   $sql = "insert into sinhvien values ('$id','$name','$age','$address')";
   execute($sql);
-  header("Location: layout.php");
+  header("Location: ../layout.php");
   die(); 
 }
 ?>
@@ -98,7 +98,7 @@ if(!empty($_POST)) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="layout.php">
+      <a class="navbar-brand" href="../layout.php">
         <span class="glyphicon glyphicon-home"></span> Trang chủ
       </a>
     </div>
@@ -133,7 +133,7 @@ if(!empty($_POST)) {
           <li><a href="#">Thông tin người dùng</a></li>
           <li><a href="#">Đổi mật khâu</a></li>
           <li><a href="#">Cập nhật hồ sơ</a></li>
-          <li><a href="logout.php">Đăng xuất</a></li>
+          <li><a href="../logout.php">Đăng xuất</a></li>
         </ul>
       </li>
     </ul>
@@ -186,7 +186,7 @@ if(!empty($_POST)) {
             </h4>
           </div>
           <div class="panel-body">
-            <img src="account.png"/>
+            <img src="../account.png"/>
 
           </div>
         </div>
