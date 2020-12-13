@@ -152,7 +152,7 @@ require_once('dbhelp.php');
             </a>
             </button></td>";
             echo "<td><button class='btn btn-danger'>
-            <a href='addStudent.php'>
+            <a href='deleteStudent.php?id=".$i['id']."'>
             Delete
             </a>
             </button></td>";
