@@ -134,6 +134,7 @@ require_once('../dbhelp.php');
             <th>Address</th>
             <th width="60px"></th>
             <th width="60px"></th>
+            <th width="60px"></th>
           </tr>
         </thead>
         <tbody>
@@ -146,6 +147,11 @@ require_once('../dbhelp.php');
             echo "<td>".$i['name']."</td>";
             echo "<td>".$i['age']."</td>";
             echo "<td>".$i['address']."</td>";
+            echo "<td><button class='btn btn-info'>
+            <a href='./seeGrade.php?id=".$i['masv']."'>
+            Grade
+            </a>
+            </button></td>";
             echo "<td><button class='btn btn-warning'>
             <a href='./editStudent.php?id=".$i['masv']."'>
             Edit
@@ -198,8 +204,6 @@ require_once('../dbhelp.php');
           <a href="../teacher/showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
           <a href="../subject/showSubjects.php" class="list-group-item">Quản lý môn học</a>
           <a href="../class/showClasses.php" class="list-group-item">Quản lý lớp học</a>
-          <a href="#" class="list-group-item">Quản lý điểm</a>
-<!--           <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a> -->
         </div>
       </div>
     </aside>

@@ -192,7 +192,6 @@ if(!empty($_POST)) {
           <a href="../teacher/showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
           <a href="./showSubjects.php" class="list-group-item">Quản lý môn học</a>
           <a href="../class/showClasses.php" class="list-group-item">Quản lý lớp học</a>
-          <a href="#" class="list-group-item">Quản lý điểm</a>
         </div>
       </div>
     </aside>

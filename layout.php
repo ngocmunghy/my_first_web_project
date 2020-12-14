@@ -198,8 +198,6 @@ require_once('dbhelp.php');
           <a href="./teacher/showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
           <a href="./subject/showSubjects.php" class="list-group-item">Quản lý môn học</a>
           <a href="./class/showClasses.php" class="list-group-item">Quản lý lớp học</a>
-          <a href="#" class="list-group-item">Quản lý điểm</a>
-<!--           <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a> -->
         </div>
       </div>
     </aside>
