@@ -1,6 +1,7 @@
 <?php
 session_start(); 
 require_once('../dbhelp.php');
+$id = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,7 @@ require_once('../dbhelp.php');
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Show Student</title>
+ <title>Show Grade</title>
  <style type="text/css">
    header {
     position: relative;
@@ -119,7 +120,7 @@ require_once('../dbhelp.php');
       <div>
         <h4 class = "panel">                    
           <b>
-            Quản lý sinh viên
+            Bảng điểm cá nhân
           </b>
         </h4>
 
@@ -128,40 +129,21 @@ require_once('../dbhelp.php');
       <table class="table table-bordered table-striped">
         <thead class = "table-dark">
           <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Address</th>
-            <th width="60px"></th>
-            <th width="60px"></th>
-            <th width="60px"></th>
+            <th>Subject ID</th>
+            <th>Subject Name</th>
+            <th>Grade</th>
           </tr>
         </thead>
         <tbody>
           <?php
-          $sql = "select * from sinhvien"; 
+          $sql = "select lop.mamh,monhoc.tenmh,sinhvienlop.diem from sinhvienlop,lop,monhoc where sinhvienlop.masv = '$id' and sinhvienlop.malop = lop.malop and lop.mamh = monhoc.mamh"; 
           $stuList = executeResult($sql);
           foreach($stuList as $i) {
             echo "<tr>";
-            echo "<td>".$i['masv']."</td>";
-            echo "<td>".$i['name']."</td>";
-            echo "<td>".$i['age']."</td>";
-            echo "<td>".$i['address']."</td>";
-            echo "<td><button class='btn btn-info'>
-            <a href='./showGrade.php?id=".$i['masv']."'>
-            Grade
-            </a>
-            </button></td>";
-            echo "<td><button class='btn btn-warning'>
-            <a href='./editStudent.php?id=".$i['masv']."'>
-            Edit
-            </a>
-            </button></td>";
-            echo "<td><button class='btn btn-danger'>
-            <a href='./deleteStudent.php?id=".$i['masv']."'>
-            Delete
-            </a>
-            </button></td>";
+            echo "<td>".$i['mamh']."</td>";
+            echo "<td>".$i['tenmh']."</td>";
+            echo "<td>".$i['diem']."</td>";
+            // echo "<td>".$i['address']."</td>";
             echo "</tr>";
           } 
           ?>
@@ -170,8 +152,8 @@ require_once('../dbhelp.php');
 
       </table>
       <button class="btn btn-success">
-        <a href="./addStudent.php">
-          Add Student
+        <a href="./showStudents.php">
+          Back
         </a>
       </button>
     </article>
