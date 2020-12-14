@@ -177,7 +177,7 @@ if(!empty($_POST)) {
             </h4>
           </div>
           <div class="panel-body">
-            <img src="../account.png"/>
+            <img src="../image/account.png"/>
 
           </div>
         </div>
@@ -189,9 +189,9 @@ if(!empty($_POST)) {
         </div>
         <div class="list-group">
           <a href="../student/showStudents.php" class="list-group-item">Quản lý sinh viên</a>
-          <a href="../teacher/showTeacher.php" class="list-group-item">Quản lý giáo viên</a>
+          <a href="../teacher/showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
           <a href="./showSubjects.php" class="list-group-item">Quản lý môn học</a>
-          <a href="#" class="list-group-item">Quản lý lớp học</a>
+          <a href="../class/showClasses.php" class="list-group-item">Quản lý lớp học</a>
           <a href="#" class="list-group-item">Quản lý điểm</a>
         </div>
       </div>

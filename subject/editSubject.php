@@ -9,10 +9,10 @@ $res = $rs[0];
 
 if(!empty($_POST)) {
 
-  if(isset($_POST['mamh'])) {
-    $mamh = $_POST['mamh'];
-    $mamh = addslashes($mamh);
-  }
+  // if(isset($_POST['mamh'])) {
+  //   $mamh = $_POST['mamh'];
+  //   $mamh = addslashes($mamh);
+  // }
 
   if(isset($_POST['tenmh'])) {
     $tenmh = $_POST['tenmh'];
@@ -24,7 +24,7 @@ if(!empty($_POST)) {
     $tinchi = addslashes($tinchi);
   }
 
-  $sql = "update monhoc set mamh = '$mamh', tenmh = '$tenmh', tinchi = '$tinchi' where mamh = '$mamh'";
+  $sql = "update monhoc set tenmh = '$tenmh', tinchi = '$tinchi' where mamh = '$mamh'";
   execute($sql);
   header("Location: ./showSubjects.php");
   die(); 
@@ -146,14 +146,14 @@ if(!empty($_POST)) {
     <article class="col-sm-9">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="text-center">Update teacher's information</h3>
+          <h3 class="text-center">Update subject's information</h3>
         </div>
         <div class="panel-body">
           <form method="POST">
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="usr">Subject ID:</label>
               <input required="true" type="text" class="form-control" id="usr" name="mamh" value="<?php echo $res['mamh']; ?>">
-            </div>
+            </div> -->
             <div class="form-group">
               <label for="age">Subject Name:</label>
               <input required="true" type="text" class="form-control" id="age" name="tenmh" value="<?php echo $res['tenmh']; ?>">
@@ -182,7 +182,7 @@ if(!empty($_POST)) {
             </h4>
           </div>
           <div class="panel-body">
-            <img src="../account.png"/>
+            <img src="../image/account.png"/>
 
           </div>
         </div>
@@ -196,7 +196,7 @@ if(!empty($_POST)) {
           <a href="../student/showStudents.php" class="list-group-item">Quản lý sinh viên</a>
           <a href="..//teacher/showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
           <a href="./showSubjects.php" class="list-group-item">Quản lý môn học</a>
-          <a href="#" class="list-group-item">Quản lý lớp học</a>
+          <a href="../class/showClasses.php" class="list-group-item">Quản lý lớp học</a>
           <a href="#" class="list-group-item">Quản lý điểm</a>
 <!--           <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a> -->
         </div>

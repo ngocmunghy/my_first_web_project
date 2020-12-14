@@ -10,7 +10,7 @@ require_once('../dbhelp.php');
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Show Subjects</title>
+ <title>Show Classes</title>
  <style type="text/css">
    header {
     position: relative;
@@ -119,7 +119,7 @@ require_once('../dbhelp.php');
       <div>
         <h4 class = "panel">                    
           <b>
-            Quản lý môn học
+            Quản lý lớp học
           </b>
         </h4>
 
@@ -128,29 +128,35 @@ require_once('../dbhelp.php');
       <table class="table table-bordered table-striped">
         <thead class = "table-dark">
           <tr>
-            <th>#</th>
-            <th>Subject Name</th>
-            <th>Credits</th>
+            <th>Class ID</th>
+            <th>Subject ID</th>
+            <th>Teacher ID</th>
+            <th width="60px"></th>
             <th width="60px"></th>
             <th width="60px"></th>
           </tr>
         </thead>
         <tbody>
           <?php
-          $sql = "select * from monhoc"; 
+          $sql = "select * from lop"; 
           $stuList = executeResult($sql);
           foreach($stuList as $i) {
             echo "<tr>";
+            echo "<td>".$i['malop']."</td>";
             echo "<td>".$i['mamh']."</td>";
-            echo "<td>".$i['tenmh']."</td>";
-            echo "<td>".$i['tinchi']."</td>";
+            echo "<td>".$i['magv']."</td>";
+            echo "<td><button class='btn btn-info'>
+            <a href='./viewClass.php?id=".$i['malop']."'>
+            View
+            </a>
+            </button></td>";
             echo "<td><button class='btn btn-warning'>
-            <a href='./editSubject.php?id=".$i['mamh']."'>
+            <a href='./editClass.php?id=".$i['malop']."'>
             Edit
             </a>
             </button></td>";
             echo "<td><button class='btn btn-danger'>
-            <a href='./deleteSubject.php?id=".$i['mamh']."'>
+            <a href='./deleteClass.php?id=".$i['malop']."'>
             Delete
             </a>
             </button></td>";
@@ -162,8 +168,8 @@ require_once('../dbhelp.php');
 
       </table>
       <button class="btn btn-success">
-        <a href="./addSubject.php">
-          Add Subject
+        <a href="./addClass.php">
+          Add Class
         </a>
       </button>
     </article>
@@ -194,8 +200,8 @@ require_once('../dbhelp.php');
         <div class="list-group">
           <a href="../student/showStudents.php" class="list-group-item">Quản lý sinh viên</a>
           <a href="../teacher/showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
-          <a href="./showSubjects.php" class="list-group-item">Quản lý môn học</a>
-          <a href="../class/showClasses.php" class="list-group-item">Quản lý lớp học</a>
+          <a href="../subject/showSubjects.php" class="list-group-item">Quản lý môn học</a>
+          <a href="./showClasses.php" class="list-group-item">Quản lý lớp học</a>
           <a href="#" class="list-group-item">Quản lý điểm</a>
 <!--           <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a> -->
         </div>

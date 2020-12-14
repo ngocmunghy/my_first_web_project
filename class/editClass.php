@@ -1,6 +1,34 @@
 <?php
 session_start(); 
 require_once('../dbhelp.php');
+$malop = $_GET['id'];
+$cmd = "select * from lop where malop = '$malop'";
+$rs = executeResult($cmd);
+$res = $rs[0];
+//print_r($rs)
+
+if(!empty($_POST)) {
+
+  // if(isset($_POST['malop'])) {
+  //   $name = $_POST['usr'];
+  //   $name = addslashes($name);
+  // }
+
+  if(isset($_POST['mamh'])) {
+    $mamh = $_POST['mamh'];
+    $mamh = addslashes($mamh);
+  }
+
+  if(isset($_POST['magv'])) {
+    $magv = $_POST['magv'];
+    $magv = addslashes($magv);
+  }
+
+  $sql = "update lop set mamh = '$mamh', magv = '$magv' where malop = '$malop'";
+  execute($sql);
+  header("Location: ./showClasses.php");
+  die(); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +38,7 @@ require_once('../dbhelp.php');
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Show Subjects</title>
+ <title>Edit Student's info</title>
  <style type="text/css">
    header {
     position: relative;
@@ -116,56 +144,29 @@ require_once('../dbhelp.php');
 <div class="container" style = "height: auto">
   <div class = "row">
     <article class="col-sm-9">
-      <div>
-        <h4 class = "panel">                    
-          <b>
-            Quản lý môn học
-          </b>
-        </h4>
-
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="text-center">Update student's information</h3>
+        </div>
+        <div class="panel-body">
+          <form method="POST">
+            <!-- <div class="form-group">
+              <label for="usr">Class ID:</label>
+              <input required="true" type="text" class="form-control" id="usr" name="malop" value="<?php echo $res['malop']; ?>">
+            </div> -->
+            <div class="form-group">
+              <label for="age">Subject ID:</label>
+              <input required="true" type="text" class="form-control" id="age" name="mamh" value="<?php echo $res['mamh']; ?>">
+            </div>
+            <div class="form-group">
+              <label for="address">Tutor ID:</label>
+              <input type="number" class="form-control" id="address" name="magv" value="<?php echo $res['magv']; ?>">
+            </div>
+            <button class="btn btn-success">Save</button>
+          </form>
+        </div>
       </div>
 
-      <table class="table table-bordered table-striped">
-        <thead class = "table-dark">
-          <tr>
-            <th>#</th>
-            <th>Subject Name</th>
-            <th>Credits</th>
-            <th width="60px"></th>
-            <th width="60px"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $sql = "select * from monhoc"; 
-          $stuList = executeResult($sql);
-          foreach($stuList as $i) {
-            echo "<tr>";
-            echo "<td>".$i['mamh']."</td>";
-            echo "<td>".$i['tenmh']."</td>";
-            echo "<td>".$i['tinchi']."</td>";
-            echo "<td><button class='btn btn-warning'>
-            <a href='./editSubject.php?id=".$i['mamh']."'>
-            Edit
-            </a>
-            </button></td>";
-            echo "<td><button class='btn btn-danger'>
-            <a href='./deleteSubject.php?id=".$i['mamh']."'>
-            Delete
-            </a>
-            </button></td>";
-            echo "</tr>";
-          } 
-          ?>
-
-        </tbody>
-
-      </table>
-      <button class="btn btn-success">
-        <a href="./addSubject.php">
-          Add Subject
-        </a>
-      </button>
     </article>
 
     <aside class="col-sm-3">
@@ -194,8 +195,8 @@ require_once('../dbhelp.php');
         <div class="list-group">
           <a href="../student/showStudents.php" class="list-group-item">Quản lý sinh viên</a>
           <a href="../teacher/showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
-          <a href="./showSubjects.php" class="list-group-item">Quản lý môn học</a>
-          <a href="../class/showClasses.php" class="list-group-item">Quản lý lớp học</a>
+          <a href="../subject/showSubjects.php" class="list-group-item">Quản lý môn học</a>
+          <a href="./showClasses.php" class="list-group-item">Quản lý lớp học</a>
           <a href="#" class="list-group-item">Quản lý điểm</a>
 <!--           <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a> -->
         </div>

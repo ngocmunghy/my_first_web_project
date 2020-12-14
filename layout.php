@@ -183,7 +183,7 @@ require_once('dbhelp.php');
             </h4>
           </div>
           <div class="panel-body">
-            <img src="account.png"/>
+            <img src="../image/account.png"/>
 
           </div>
         </div>
@@ -197,7 +197,7 @@ require_once('dbhelp.php');
           <a href="./student/showStudents.php" class="list-group-item">Quản lý sinh viên</a>
           <a href="./teacher/showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
           <a href="./subject/showSubjects.php" class="list-group-item">Quản lý môn học</a>
-          <a href="#" class="list-group-item">Quản lý lớp học</a>
+          <a href="./class/showClasses.php" class="list-group-item">Quản lý lớp học</a>
           <a href="#" class="list-group-item">Quản lý điểm</a>
 <!--           <a href="#" class="list-group-item">Quản lý cơ sở vật chất</a> -->
         </div>
