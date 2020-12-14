@@ -1,7 +1,34 @@
 <?php
-  session_start(); 
-  require_once("../dbhelp.php");
-  $id = $_GET['id'];
+session_start(); 
+require_once('../dbhelp.php');
+$malop = $_GET['id_class'];
+$masv = $_GET['id_stu'];
+$cmd = "select monhoc.mamh, monhoc.tenmh, diem from sinhvienlop, lop, monhoc where sinhvienlop.masv = '$masv' and sinhvienlop.malop = '$malop' and sinhvienlop.malop = lop.malop and lop.mamh = monhoc.mamh";
+$rs = executeResult($cmd);
+$res = $rs[0];
+//print_r($rs);
+
+if(!empty($_POST)) {
+  // if(isset($_POST['diem'])) {
+  //   $diem = $_POST['diem'];
+  //   $diem = addslashes($diem);
+  // }
+
+  // if(isset($_POST['diem'])) {
+  //   $diem = $_POST['diem'];
+  //   $diem = addslashes($diem);
+  // }
+
+  if(isset($_POST['diem'])) {
+    $diem = $_POST['diem'];
+    $diem = addslashes($diem);
+  }
+
+  $sql = "update sinhvienlop set diem = '$diem' where masv = '$masv' and malop = '$malop'";
+  execute($sql);
+  header("Location: ./viewClass.php?id=".$malop."");
+  die(); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +38,7 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Show Student</title>
+ <title>Edit Student's info</title>
  <style type="text/css">
    header {
     position: relative;
@@ -117,62 +144,30 @@
 <div class="container" style = "height: auto">
   <div class = "row">
     <article class="col-sm-9">
-      <div>
-        <h4 class = "panel">                    
-          <b>
-            Danh sách lớp học
-          </b>
-        </h4>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="text-center">Update student's grade</h3>
+        </div>
+        <div class="panel-body">
+          <form method="POST">
+            <div class="form-group">
+              <label for="age">Subject ID:</label>
+              <input readonly="true" required="true" type="text" class="form-control" id="age" name="mamh" value="<?php echo $res['mamh']; ?>">
+            </div>
+            <div class="form-group">
+              <label for="age">Subject Name:</label>
+              <input readonly="true" required="true" type="text" class="form-control" id="age" name="mamh" value="<?php echo $res['tenmh']; ?>">
+            </div>
+            <div class="form-group">
+              <label for="age">Please enter grade</label>
+              <input required="true" type="number" step="0.01" class="form-control" id="age" name="diem" value="<?php echo $res['diem']; ?>">
+            </div>
 
+            <button class="btn btn-success">Save</button>
+          </form>
+        </div>
       </div>
 
-      <table class="table table-bordered table-striped">
-        <thead class = "table-dark">
-          <tr>
-
-            <th>Student ID</th>
-            <th>Student Name</th>
-            <th>Student Age</th>
-            <th>Student Address</th>
-            <th>Student Grade</th>
-            <th width="30px"></th>
-            <th width="30px"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $sql = "select sinhvien.masv,sinhvien.name,sinhvien.age,sinhvien.address,sinhvienlop.diem from sinhvienlop,sinhvien where sinhvienlop.malop = '$id' and sinhvienlop.masv = sinhvien.masv"; 
-          //print_r($sql);
-          $stuList = executeResult($sql);
-          foreach($stuList as $i) {
-            echo "<tr>";
-            echo "<td>".$i['masv']."</td>";
-            echo "<td>".$i['name']."</td>";
-            echo "<td>".$i['age']."</td>";
-            echo "<td>".$i['address']."</td>";
-            echo "<td>".$i['diem']."</td>";
-            echo "<td><button class='btn btn-warning'>
-            <a href='./editGrade.php?id_class=".$id."&id_stu=".$i['masv']."'>
-            Edit Grade
-            </a>
-            </button></td>";
-            echo "<td><button class='btn btn-danger'>
-            <a href='./deleteStudentFromClass.php?id_class=".$id."&id_stu=".$i['masv']."'>
-            Remove 
-            </a>
-            </button></td>";
-            echo "</tr>";
-          } 
-          ?>
-
-        </tbody>
-
-      </table>
-      <button class="btn btn-success">
-        <a href="./addStudentToClass.php?id_class=<?php echo $id; ?>">
-          Add student to class
-        </a>
-      </button>
     </article>
 
     <aside class="col-sm-3">
