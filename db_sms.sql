@@ -2,10 +2,11 @@ create table login(
 	email varchar(100) not null,
 	password varchar(50) not null,
 	name varchar(50) not null,
+	address varchar(100) not null,
 	primary key(email)
 );
 
-insert into login values ('admin@gmail.com','123456','Ngoc Mung');
+insert into login values ('admin@gmail.com','123456','Ngoc Mung','Hung Yen');
 
 create table sinhvien(
 	masv int auto_increment,
