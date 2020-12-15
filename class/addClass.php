@@ -151,7 +151,7 @@ if(!empty($_POST)) {
               <input type="text" class="form-control" id="id" name="malop">
             </div>
             <div class="form-group">
-              <label for="usr">Class Name:</label>
+              <label for="usr">Subject ID:</label>
               <input required="true" type="text" class="form-control" id="usr" name="mamh">
             </div>
             <div class="form-group">

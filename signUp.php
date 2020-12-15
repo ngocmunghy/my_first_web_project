@@ -1,3 +1,6 @@
+<?php 
+	require_once("dbhelp.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +21,7 @@
 
 			<form action="" method="post">
 				<input type="text" id="name" class="fadeIn second" placeholder="Enter name" name="name" required>
+				<input type="text" id="name" class="fadeIn second" placeholder="Enter address" name="address" required>
 				<input type="text" id="login" class="fadeIn second" placeholder="Enter email" name="email" required>
 				<input type="password" id="password" class="fadeIn second" placeholder="Enter password" name="password" required>
 				<input type="password" id="repassword" class="fadeIn second" placeholder="Enter password again" name="repassword" required>
@@ -38,19 +42,23 @@
 			if(!$conn) {
 				die("Connection failed: ". $conn->connect_error);
 			}
-			$name = $_POST['name'];
-			$email = $_POST['email'];
-			$password = $_POST['password'];
-			$cmd = "insert into login values ('$email','$password','$name')";
+			$name = addslashes($_POST['name']);			
+			$address = addslashes($_POST['address']);
+			$email = addslashes($_POST['email']);
+			$password = addslashes($_POST['password']);
+			$cmd = "insert into login values ('$email','$password','$name','$address')";
+			execute($cmd);
+			header("Location: login.php");
+			die();
 			//$result = mysqli_query($conn,$cmd);
-			if(mysqli_query($conn, $cmd)) {
-				$sql = "select * from login where email = '$email'";
-				$res = mysqli_query($conn,$sql);
-				$_SESSION['email'] = $email;
-				$_SESSION['name'] = $name;
-				header("Location: layout.php");
-			}
-			mysqli_close($conn);
+			// if(mysqli_query($conn, $cmd)) {
+			// 	$sql = "select * from login where email = '$email'";
+			// 	$res = mysqli_query($conn,$sql);
+			// 	$_SESSION['email'] = $email;
+			// 	$_SESSION['name'] = $name;
+			// 	header("Location: layout.php");
+			// }
+			// mysqli_close($conn);
 		} else {
 			echo "The re-password you've input is not match!";
 		}

@@ -24,7 +24,7 @@ require_once('dbhelp.php');
   .shopping-mall>h1{
     font-family: Times New Roman;
     font-size: 50px;
-    color: white;
+    color: black;
     letter-spacing: 0.3px;
     text-shadow: 0 0 2px black;
     padding-bottom: 0px;
