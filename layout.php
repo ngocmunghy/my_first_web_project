@@ -105,7 +105,7 @@ require_once('dbhelp.php');
           <li><a href="./user/showUserInfo.php">Thông tin người dùng</a></li>
           <li><a href="./user/changePassword.php">Đổi mật khâu</a></li>
           <li><a href="./user/changeUserInfo.php">Cập nhật hồ sơ</a></li>
-          <li><a href="logout.php">Đăng xuất</a></li>
+          <li><a href="./user/logout.php">Đăng xuất</a></li>
         </ul>
       </li>
     </ul>

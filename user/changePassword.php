@@ -1,7 +1,41 @@
 <?php
-  session_start(); 
-  require_once("../dbhelp.php");
-  $id = $_GET['id'];
+session_start(); 
+require_once('../dbhelp.php');
+$email = $_SESSION['email'];
+$cmd = "select * from login where email = '$email'";
+$rs = executeResult($cmd);
+$res = $rs[0];
+$curpass = $res['password'];
+// echo "$curpass";
+//print_r($rs);
+
+if(!empty($_POST)) {
+
+  if(isset($_POST['pass'])) {
+    $pass = $_POST['pass'];
+    $pass = addslashes($pass);
+  }
+
+  if(isset($_POST['newpass'])) {
+    $newpass = $_POST['newpass'];
+    $newpass = addslashes($newpass);
+  }
+
+  if(isset($_POST['repass'])) {
+    $repass = $_POST['repass'];
+    $repass = addslashes($repass);
+  }
+
+  if (strcmp($curpass, $pass) == 0) {
+    if (strcmp($newpass, $repass) == 0) {
+      $sql = "update login set password = '$newpass' where email = '$email'";
+      $kq = execute($sql);
+      echo "Update password successfully!";
+      header("Location: ./logout.php");
+    }
+  }
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +45,7 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Show Student</title>
+ <title>Change password</title>
  <style type="text/css">
    header {
     position: relative;
@@ -104,9 +138,9 @@
         </a>
         <ul class="dropdown-menu">
           <li><a href="../user/showUserInfo.php">Thông tin người dùng</a></li>
-          <li><a href="../user/changePassword.php">Đổi mật khâu</a></li>
+          <li><a href="./changePassword.php">Đổi mật khâu</a></li>
           <li><a href="#">Cập nhật hồ sơ</a></li>
-          <li><a href="../user/logout.php">Đăng xuất</a></li>
+          <li><a href="./logout.php">Đăng xuất</a></li>
         </ul>
       </li>
     </ul>
@@ -117,62 +151,33 @@
 <div class="container" style = "height: auto">
   <div class = "row">
     <article class="col-sm-9">
-      <div>
-        <h4 class = "panel">                    
-          <b>
-            Danh sách lớp học
-          </b>
-        </h4>
-
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="text-center">Change user's password</h3>
+        </div>
+        <div class="panel-body">
+          <form method="POST">
+            <div class="form-group">
+              <label for="usr">Email:</label>
+              <input readonly="true" required="true" type="text" class="form-control" id="usr" name="email" value="<?php echo $_SESSION['email'] ; ?>">
+            </div>
+            <div class="form-group">
+              <label for="usr">Input your current password:</label>
+              <input required="true" type="password" class="form-control" id="usr" name="pass">
+            </div>
+            <div class="form-group">
+              <label for="age">Input your new password:</label>
+              <input required="true" type="password" class="form-control" id="age" name="newpass">
+            </div>
+            <div class="form-group">
+              <label for="address">Re-input your new password:</label>
+              <input required="true" type="password" class="form-control" id="address" name="repass">
+            </div>
+            <button class="btn btn-success">Save</button>
+          </form>
+        </div>
       </div>
 
-      <table class="table table-bordered table-striped">
-        <thead class = "table-dark">
-          <tr>
-
-            <th>Student ID</th>
-            <th>Student Name</th>
-            <th>Student Age</th>
-            <th>Student Address</th>
-            <th>Student Grade</th>
-            <th width="30px"></th>
-            <th width="30px"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $sql = "select sinhvien.masv,sinhvien.name,sinhvien.age,sinhvien.address,sinhvienlop.diem from sinhvienlop,sinhvien where sinhvienlop.malop = '$id' and sinhvienlop.masv = sinhvien.masv"; 
-          //print_r($sql);
-          $stuList = executeResult($sql);
-          foreach($stuList as $i) {
-            echo "<tr>";
-            echo "<td>".$i['masv']."</td>";
-            echo "<td>".$i['name']."</td>";
-            echo "<td>".$i['age']."</td>";
-            echo "<td>".$i['address']."</td>";
-            echo "<td>".$i['diem']."</td>";
-            echo "<td><button class='btn btn-warning'>
-            <a href='./editGrade.php?id_class=".$id."&id_stu=".$i['masv']."'>
-            Edit Grade
-            </a>
-            </button></td>";
-            echo "<td><button class='btn btn-danger'>
-            <a href='./deleteStudentFromClass.php?id_class=".$id."&id_stu=".$i['masv']."'>
-            Remove 
-            </a>
-            </button></td>";
-            echo "</tr>";
-          } 
-          ?>
-
-        </tbody>
-
-      </table>
-      <button class="btn btn-success">
-        <a href="./addStudentToClass.php?id_class=<?php echo $id; ?>">
-          Add student to class
-        </a>
-      </button>
     </article>
 
     <aside class="col-sm-3">
@@ -202,7 +207,7 @@
           <a href="../student/showStudents.php" class="list-group-item">Quản lý sinh viên</a>
           <a href="../teacher/showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
           <a href="../subject/showSubjects.php" class="list-group-item">Quản lý môn học</a>
-          <a href="./showClasses.php" class="list-group-item">Quản lý lớp học</a>
+          <a href="../class/showClasses.php" class="list-group-item">Quản lý lớp học</a>
         </div>
       </div>
     </aside>
