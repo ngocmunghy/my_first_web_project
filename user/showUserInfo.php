@@ -1,34 +1,6 @@
 <?php
 session_start(); 
 require_once('../dbhelp.php');
-$masv = $_GET['id'];
-$cmd = "select * from sinhvien where masv = '$masv'";
-$rs = executeResult($cmd);
-$res = $rs[0];
-//print_r($rs)
-
-if(!empty($_POST)) {
-
-  if(isset($_POST['usr'])) {
-    $name = $_POST['usr'];
-    $name = addslashes($name);
-  }
-
-  if(isset($_POST['age'])) {
-    $age = $_POST['age'];
-    $age = addslashes($age);
-  }
-
-  if(isset($_POST['address'])) {
-    $address = $_POST['address'];
-    $address = addslashes($address);
-  }
-
-  $sql = "update sinhvien set name = '$name', age = '$age', address = '$address' where masv = '$masv'";
-  execute($sql);
-  header("Location: ./showStudents.php");
-  die(); 
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +10,7 @@ if(!empty($_POST)) {
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Edit Student's info</title>
+ <title>Show User Information</title>
  <style type="text/css">
    header {
     position: relative;
@@ -130,7 +102,7 @@ if(!empty($_POST)) {
           <span class="glyphicon glyphicon-user"></span> Tài khoản <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="../user/showUserInfo.php">Thông tin người dùng</a></li>
+          <li><a href="#">Thông tin người dùng</a></li>
           <li><a href="#">Đổi mật khâu</a></li>
           <li><a href="#">Cập nhật hồ sơ</a></li>
           <li><a href="../logout.php">Đăng xuất</a></li>
@@ -144,29 +116,38 @@ if(!empty($_POST)) {
 <div class="container" style = "height: auto">
   <div class = "row">
     <article class="col-sm-9">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="text-center">Update student's information</h3>
-        </div>
-        <div class="panel-body">
-          <form method="POST">
-            <div class="form-group">
-              <label for="usr">Name:</label>
-              <input required="true" type="text" class="form-control" id="usr" name="usr" value="<?php echo $res['name']; ?>">
-            </div>
-            <div class="form-group">
-              <label for="age">Age:</label>
-              <input required="true" type="number" class="form-control" id="age" name="age" value="<?php echo $res['age']; ?>">
-            </div>
-            <div class="form-group">
-              <label for="address">Address:</label>
-              <input type="text" class="form-control" id="address" name="address" value="<?php echo $res['address']; ?>">
-            </div>
-            <button class="btn btn-success">Save</button>
-          </form>
-        </div>
+      <div>
+        <h4 class = "panel">                    
+          <b>
+            Thông tin người dùng
+          </b>
+        </h4>
+
       </div>
 
+      <table class="table table-bordered table-striped">
+        <thead class = "table-dark">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><?php echo $_SESSION['name']; ?></th>
+            <th><?php echo $_SESSION['email']; ?></th>
+            <th>********</th>
+          </tr>
+
+        </tbody>
+
+      </table>
+      <button class="btn btn-success">
+        <a href="../layout.php">
+          Back
+        </a>
+      </button>
     </article>
 
     <aside class="col-sm-3">
@@ -193,10 +174,10 @@ if(!empty($_POST)) {
           <strong>Danh sách</strong>
         </div>
         <div class="list-group">
-          <a href="./showStudents.php" class="list-group-item">Quản lý sinh viên</a>
+          <a href="../student/showStudents.php" class="list-group-item">Quản lý sinh viên</a>
           <a href="../teacher/showTeachers.php" class="list-group-item">Quản lý giáo viên</a>
           <a href="../subject/showSubjects.php" class="list-group-item">Quản lý môn học</a>
-          <a href="../class/showClasses.php" class="list-group-item">Quản lý lớp học</a>
+          <a href="..//class/showClasses.php" class="list-group-item">Quản lý lớp học</a>
         </div>
       </div>
     </aside>

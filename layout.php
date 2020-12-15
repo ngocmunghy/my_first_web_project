@@ -57,7 +57,7 @@ require_once('dbhelp.php');
      <h1>Phần mềm quản lý trường học</h1>
      <!-- <h5>The center point of the professional programming</h5> -->
    </div>
-   <img class = "pull-right" src="hust.png"/>
+   <img class = "pull-right" src="./image/hust.png"/>
  </header>
 
  <nav class="navbar navbar-inverse">
@@ -102,9 +102,9 @@ require_once('dbhelp.php');
           <span class="glyphicon glyphicon-user"></span> Tài khoản <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="#">Thông tin người dùng</a></li>
-          <li><a href="#">Đổi mật khâu</a></li>
-          <li><a href="#">Cập nhật hồ sơ</a></li>
+          <li><a href="./user/showUserInfo.php">Thông tin người dùng</a></li>
+          <li><a href="./user/changePassword.php">Đổi mật khâu</a></li>
+          <li><a href="./user/changeUserInfo.php">Cập nhật hồ sơ</a></li>
           <li><a href="logout.php">Đăng xuất</a></li>
         </ul>
       </li>
@@ -183,7 +183,7 @@ require_once('dbhelp.php');
             </h4>
           </div>
           <div class="panel-body">
-            <img src="../image/account.png"/>
+            <img src="./image/account.png"/>
 
           </div>
         </div>
