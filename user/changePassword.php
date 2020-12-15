@@ -29,9 +29,10 @@ if(!empty($_POST)) {
   if (strcmp($curpass, $pass) == 0) {
     if (strcmp($newpass, $repass) == 0) {
       $sql = "update login set password = '$newpass' where email = '$email'";
-      $kq = execute($sql);
+      execute($sql);
       echo "Update password successfully!";
       header("Location: ./logout.php");
+      die();
     }
   }
 
@@ -137,9 +138,9 @@ if(!empty($_POST)) {
           <span class="glyphicon glyphicon-user"></span> Tài khoản <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="../user/showUserInfo.php">Thông tin người dùng</a></li>
+          <li><a href="./user/showUserInfo.php">Thông tin người dùng</a></li>
           <li><a href="./changePassword.php">Đổi mật khâu</a></li>
-          <li><a href="#">Cập nhật hồ sơ</a></li>
+          <li><a href="./editUserInfo.php">Cập nhật hồ sơ</a></li>
           <li><a href="./logout.php">Đăng xuất</a></li>
         </ul>
       </li>

@@ -102,10 +102,10 @@ require_once('../dbhelp.php');
           <span class="glyphicon glyphicon-user"></span> Tài khoản <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="./showUserInfo.php">Thông tin người dùng</a></li>
-          <li><a href="#">Đổi mật khâu</a></li>
-          <li><a href="#">Cập nhật hồ sơ</a></li>
-          <li><a href="../logout.php">Đăng xuất</a></li>
+          <li><a href="./user/showUserInfo.php">Thông tin người dùng</a></li>
+          <li><a href="./changePassword.php">Đổi mật khâu</a></li>
+          <li><a href="./editUserInfo.php">Cập nhật hồ sơ</a></li>
+          <li><a href="./logout.php">Đăng xuất</a></li>
         </ul>
       </li>
     </ul>
