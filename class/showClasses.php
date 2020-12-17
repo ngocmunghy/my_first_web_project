@@ -92,9 +92,10 @@ require_once('../dbhelp.php');
       <table class="table table-bordered table-striped">
         <thead class = "table-dark">
           <tr>
-            <th>Class ID</th>
+            <th>ID</th>
             <th>Subject ID</th>
             <th>Teacher ID</th>
+            <th>Teacher's Name</th>
             <th width="60px"></th>
             <th width="60px"></th>
             <th width="60px"></th>
@@ -102,13 +103,14 @@ require_once('../dbhelp.php');
         </thead>
         <tbody>
           <?php
-          $sql = "select * from lop"; 
+          $sql = "select lop.malop,lop.mamh,lop.magv,giaovien.name from lop,giaovien where lop.magv = giaovien.magv"; 
           $stuList = executeResult($sql);
           foreach($stuList as $i) {
             echo "<tr>";
             echo "<td>".$i['malop']."</td>";
             echo "<td>".$i['mamh']."</td>";
             echo "<td>".$i['magv']."</td>";
+            echo "<td>".$i['name']."</td>";
             echo "<td><button class='btn btn-info'>
             <a href='./viewClass.php?id=".$i['malop']."'>
             View

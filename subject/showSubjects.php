@@ -92,7 +92,7 @@ require_once('../dbhelp.php');
       <table class="table table-bordered table-striped">
         <thead class = "table-dark">
           <tr>
-            <th>#</th>
+            <th>ID</th>
             <th>Subject Name</th>
             <th>Credits</th>
             <th width="60px"></th>
