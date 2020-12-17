@@ -104,41 +104,42 @@ if(!empty($_POST)) {
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <ul class="nav navbar-nav">
-      <li class="active">
-        <a href="#">
-          <span class="glyphicon glyphicon-list-alt"></span> Giới thiệu
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="glyphicon glyphicon-earphone"></span> Liên hệ
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="glyphicon glyphicon-envelope"></span> Góp ý
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="glyphicon glyphicon-question-sign"></span> Hỏi đáp
-        </a>
-      </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span class="glyphicon glyphicon-user"></span> Tài khoản <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="../user/showUserInfo.php">Thông tin người dùng</a></li>
-          <li><a href="../user/changePassword.php">Đổi mật khâu</a></li>
-          <li><a href="../user/editUserInfo.php">Cập nhật hồ sơ</a></li>
-          <li><a href="../user/logout.php">Đăng xuất</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div><!-- /.navbar-collapse -->
-</div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="">
+            <span class="glyphicon glyphicon-list-alt"></span> Giới thiệu
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/nngocmung9/">
+            <span class="glyphicon glyphicon-earphone"></span> Liên hệ
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/nngocmung9/">
+            <span class="glyphicon glyphicon-envelope"></span> Góp ý
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/nngocmung9/">
+            <span class="glyphicon glyphicon-question-sign"></span> Hỏi đáp
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-user"></span> Tài khoản <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="../user/showUserInfo.php">Thông tin người dùng</a></li>
+            <li><a href="../user/changePassword.php">Đổi mật khâu</a></li>
+            <li><a href="../user/editUserInfo.php">Cập nhật hồ sơ</a></li>
+            <li><a href="../user/logout.php">Đăng xuất</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
 </nav>
 
 <div class="container" style = "height: auto">
