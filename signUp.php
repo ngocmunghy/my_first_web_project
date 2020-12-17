@@ -48,7 +48,7 @@
 			$password = addslashes($_POST['password']);
 			$cmd = "insert into login values ('$email','$password','$name','$address')";
 			execute($cmd);
-			header("Location: login.php");
+			header("Location: index.php");
 			die();
 			//$result = mysqli_query($conn,$cmd);
 			// if(mysqli_query($conn, $cmd)) {
