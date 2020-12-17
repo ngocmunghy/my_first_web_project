@@ -11,44 +11,7 @@ require_once('dbhelp.php');
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <title>Layout</title>
- <style type="text/css">
-   header {
-    position: relative;
-    background-color: #d5f4e6;
-  }
-  .shopping-mall{
-    position: absolute;
-    bottom: 20px;
-    font-variant: small-caps;
-  }
-  .shopping-mall>h1{
-    font-family: Times New Roman;
-    font-size: 50px;
-    color: black;
-    letter-spacing: 0.3px;
-    text-shadow: 0 0 2px black;
-    padding-bottom: 0px;
-    border-bottom: 1px solid gray;
-    margin: 0px;
-  }
-  .poly-cart{
-    margin-top: 5px;
-  }
-
-  .poly-cart ul {
-   padding: 0px;
-   margin: 0px;
-   list-style: none;
-   font-variant: small-caps;
- }
-
- .poly-cart .panel-heading strong {
-   font-variant: small-caps;
-   font-size: larger;
-   text-shadow: 0 0 2px black;
- }  
-</style>
-<!--  <link rel="stylesheet" type="text/css" href="style.css"> -->
+ <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
   <div class="container" style = "height: auto">
@@ -77,41 +40,41 @@ require_once('dbhelp.php');
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-      <li class="active">
-        <a href="">
-          <span class="glyphicon glyphicon-list-alt"></span> Giới thiệu
-        </a>
-      </li>
-      <li>
-        <a href="https://www.facebook.com/nngocmung9/">
-          <span class="glyphicon glyphicon-earphone"></span> Liên hệ  
-        </a>
-      </li>
-      <li>
-        <a href="https://www.facebook.com/nngocmung9/">
-          <span class="glyphicon glyphicon-envelope"></span> Góp ý
-        </a>
-      </li>
-      <li>
-        <a href="https://www.facebook.com/nngocmung9/">
-          <span class="glyphicon glyphicon-question-sign"></span> Hỏi đáp
-        </a>
-      </li>
-      <li class="dropdown">
-        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span class="glyphicon glyphicon-user"></span> Tài khoản <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="./user/showUserInfo.php">Thông tin người dùng</a></li>
-          <li><a href="./user/changePassword.php">Đổi mật khâu</a></li>
-          <li><a href="./user/editUserInfo.php">Cập nhật hồ sơ</a></li>
-          <li><a href="./user/logout.php">Đăng xuất</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div><!-- /.navbar-collapse -->
-</div>
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="">
+            <span class="glyphicon glyphicon-list-alt"></span> Giới thiệu
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/nngocmung9/">
+            <span class="glyphicon glyphicon-earphone"></span> Liên hệ  
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/nngocmung9/">
+            <span class="glyphicon glyphicon-envelope"></span> Góp ý
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/nngocmung9/">
+            <span class="glyphicon glyphicon-question-sign"></span> Hỏi đáp
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-user"></span> Tài khoản <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="./user/showUserInfo.php">Thông tin người dùng</a></li>
+            <li><a href="./user/changePassword.php">Đổi mật khâu</a></li>
+            <li><a href="./user/editUserInfo.php">Cập nhật hồ sơ</a></li>
+            <li><a href="./user/logout.php">Đăng xuất</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
 </nav>
 
 <div class="container" style = "height: auto">

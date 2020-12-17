@@ -38,45 +38,8 @@ if(!empty($_POST)) {
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <title>Edit Student's info</title>
- <style type="text/css">
-   header {
-    position: relative;
-    background-color: #d5f4e6;
-  }
-  .shopping-mall{
-    position: absolute;
-    bottom: 20px;
-    font-variant: small-caps;
-  }
-  .shopping-mall>h1{
-    font-family: Times New Roman;
-    font-size: 50px;
-    color: white;
-    letter-spacing: 0.3px;
-    text-shadow: 0 0 2px black;
-    padding-bottom: 0px;
-    border-bottom: 1px solid gray;
-    margin: 0px;
-  }
-  .poly-cart{
-    margin-top: 5px;
-  }
-
-  .poly-cart ul {
-   padding: 0px;
-   margin: 0px;
-   list-style: none;
-   font-variant: small-caps;
- }
-
- .poly-cart .panel-heading strong {
-   font-variant: small-caps;
-   font-size: larger;
-   text-shadow: 0 0 2px black;
- }  
-</style>
-<!--  <link rel="stylesheet" type="text/css" href="style.css"> -->
+ <title>Edit Class's info</title>
+ <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
   <div class="container" style = "height: auto">
@@ -147,7 +110,7 @@ if(!empty($_POST)) {
     <article class="col-sm-9">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="text-center">Update student's information</h3>
+          <h3 class="text-center">Update class's information</h3>
         </div>
         <div class="panel-body">
           <form method="POST">
