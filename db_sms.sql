@@ -72,19 +72,19 @@ create table sinhvienlop(
 	foreign key(malop) references lop(malop) on delete cascade
 );
 
-insert into SinhVienLop values (1,'L001',6);
-insert into SinhVienLop values (1,'L002',8);
-insert into SinhVienLop values (1,'L004',7);
+insert into sinhvienlop values (1,'L001',6);
+insert into sinhvienlop values (1,'L002',8);
+insert into sinhvienlop values (1,'L004',7);
 
-insert into SinhVienLop values (2,'L002',9);
-insert into SinhVienLop values (2,'L003',8);
-insert into SinhVienLop values (2,'L004',7);
+insert into sinhvienlop values (2,'L002',9);
+insert into sinhvienlop values (2,'L003',8);
+insert into sinhvienlop values (2,'L004',7);
 
-insert into SinhVienLop values (3,'L001',6);
-insert into SinhVienLop values (3,'L002',4);
-insert into SinhVienLop values (3,'L003',5);
+insert into sinhvienlop values (3,'L001',6);
+insert into sinhvienlop values (3,'L002',4);
+insert into sinhvienlop values (3,'L003',5);
 
-insert into SinhVienLop values (4,'L001',8);
-insert into SinhVienLop values (4,'L003',10);
-insert into SinhVienLop values (4,'L004',9);
+insert into sinhvienlop values (4,'L001',8);
+insert into sinhvienlop values (4,'L003',10);
+insert into sinhvienlop values (4,'L004',9);
 
