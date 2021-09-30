@@ -17,7 +17,3 @@ $ git clone https://github.com/ngocmunghy/my_first_web_project.git
 5. Type `http://localhost/sms/` on the address-bar. This will lead you to Login GUI.
 6. Type `admin@gmail.com` and `123456` to access, or you can create a new account for your own. After logging in successfully, the window you will see is something like this:
 ![image info](image/login.png)
----
-### This project is not done yet, I will upgrade it soon! If you're interested, contact and join with me via:
-> Facebook: https://www.facebook.com/ngocmunghy/ <br>
-> Email: mung09021999@gmail.com
